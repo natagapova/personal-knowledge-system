@@ -10,12 +10,12 @@ The goal of this project is to better understand every component of a modern RAG
 
 ## Features
 
-- 📄 PDF document processing
-- ✂️ Text chunking
-- 🧠 Embedding generation
-- 🔎 Semantic search with a vector database
-- 🤖 LLM-powered question answering
-- 📚 Source citations
+- PDF document processing
+- Text chunking
+- Embedding generation
+- Semantic search with a vector database
+- LLM-powered question answering
+- Source citations
 
 ## Tech Stack
 

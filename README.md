@@ -51,8 +51,8 @@ personal-knowledge-system/
 ## Roadmap
 
 - [x] PDF text extraction
-- [ ] Text preprocessing
-- [ ] Chunking
+- [x] Text preprocessing
+- [x] Chunking
 - [ ] Embedding generation
 - [ ] Vector database integration
 - [ ] Semantic retrieval

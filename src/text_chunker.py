@@ -1,3 +1,9 @@
 def chunk_text(text):
     import re
-    return re.split(r'(?<=[.?!])', text)
+    initial_chunks = re.split(r'(?<=[.?!])', text)
+    chunks = []
+    for chunk in initial_chunks:
+        if chunk.strip():
+            chunks.append(chunk.strip())
+    return chunks 
+

@@ -6,4 +6,8 @@ chunks = chunk_text(text)
 
 from embeddings import embed_chunks
 embeddings = embed_chunks(chunks)
-print(embeddings.shape)
+
+from chroma_db import create_database, store_embeddings
+collection = create_database()
+store_embeddings(collection, chunks, embeddings)
+print(collection.count())

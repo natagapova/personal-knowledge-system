@@ -54,7 +54,7 @@ personal-knowledge-system/
 - [x] Text preprocessing
 - [x] Chunking
 - [x] Embedding generation
-- [ ] Vector database integration
+- [x] Vector database integration (ChromaDB)
 - [ ] Semantic retrieval
 - [ ] LLM integration
 - [ ] Citation support

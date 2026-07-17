@@ -53,7 +53,7 @@ personal-knowledge-system/
 - [x] PDF text extraction
 - [x] Text preprocessing
 - [x] Chunking
-- [ ] Embedding generation
+- [x] Embedding generation
 - [ ] Vector database integration
 - [ ] Semantic retrieval
 - [ ] LLM integration

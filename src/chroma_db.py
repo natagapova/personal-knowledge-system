@@ -17,3 +17,10 @@ def store_embeddings(collection, chunks, embeddings):
         documents = chunks,
         embeddings = embeddings,
     )
+
+def search_database(collection, query_embedding):
+    results = collection.query(
+        query_embeddings = [query_embedding],
+        n_results = 3,
+    )
+    return results

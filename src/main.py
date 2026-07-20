@@ -11,9 +11,15 @@ from chroma_db import create_database, store_embeddings, search_database
 collection = create_database()
 store_embeddings(collection, chunks, embeddings)
 
-query = input("Ask a question: ")
-query_embedding = embed_chunks([query])[0]
-results = search_database(collection, query_embedding)
-for i, document in enumerate(results["documents"][0], start=1):
-    print(f"\nResult {i}:")
-    print(document)
+while True:
+    query = input("\nAsk a question (or type 'exit'): ")
+
+    if query.lower() == "exit":
+        break
+
+    query_embedding = embed_chunks([query])[0]
+    results = search_database(collection, query_embedding)
+
+    for i, document in enumerate(results["documents"][0], start=1):
+        print(f"\nResult {i}:")
+        print(document)

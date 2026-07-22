@@ -40,7 +40,7 @@ personal-knowledge-system/
 7. Send the retrieved context to an LLM.
 8. Return an answer with citations.
 
-## MVP Roadmap
+## Roadmap
 
 - [x] PDF text extraction
 - [x] Text preprocessing
@@ -51,56 +51,9 @@ personal-knowledge-system/
 - [x] Prompt construction
 - [x] LLM integration (Ollama)
 - [ ] Citation support
-- [ ] User interface
+- [ ] Multiple files support
 
 ---
-
-## Future Improvements
-
-### Retrieval
-- [ ] Metadata storage (filename, page number, chunk ID)
-- [ ] Multi-document indexing
-- [ ] Folder indexing
-- [ ] Incremental indexing (only process new/modified files)
-- [ ] Hybrid search (semantic + keyword/BM25)
-- [ ] Query expansion
-- [ ] Reranking retrieved chunks
-
-### Supported Data Sources
-- [ ] PDF documents
-- [ ] Word documents (.docx)
-- [ ] Markdown files
-- [ ] Plain text files
-- [ ] PowerPoint presentations
-- [ ] Excel spreadsheets
-- [ ] Web pages
-- [ ] Entire local knowledge directory
-
-### Generation
-- [ ] Source-aware citations
-- [ ] Configurable prompting
-- [ ] Conversation memory
-- [ ] Streaming responses
-
-### User Experience
-- [ ] Web interface
-- [ ] Drag-and-drop document upload
-- [ ] Search history
-- [ ] Document management
-- [ ] Settings page
-
-### Performance
-- [ ] Faster embedding pipeline
-- [ ] Batch indexing
-- [ ] Embedding cache
-- [ ] Configurable embedding models
-- [ ] Configurable LLMs
-
-### Long-Term Vision
-- [ ] Search across the entire local knowledge base
-- [ ] Connect external applications (Notion, Google Drive, etc.)
-- [ ] Cross-document reasoning
-- [ ] Personal AI knowledge assistant
 
 ## Learning Goals
 

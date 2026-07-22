@@ -1,13 +1,13 @@
-from pdf_loader import load_pdf 
-text = load_pdf("data/crime.pdf")
-
+from pdf_loader import load_pdf
 from text_chunker import chunk_text
-chunks = chunk_text(text)
-
 from embeddings import embed_text
+from chroma_db import create_database, store_embeddings, search_database
+from llm import generate_answer
+
+text = load_pdf("data/crime.pdf")
+chunks = chunk_text(text)
 embeddings = embed_text(chunks)
 
-from chroma_db import create_database, store_embeddings, search_database
 collection = create_database()
 if collection.count() == 0:
     print("Indexing PDF...")
@@ -24,12 +24,8 @@ while True:
     query_embedding = embed_text([query])[0]
     results = search_database(collection, query_embedding)
 
-    context = "\n".join(results["documents"][0])
-    print(context)
+    context = "\n\n".join(results["documents"][0])
+    
+    answer = generate_answer(query, context)
+    print(answer)
 
-    # Old results output
-    """
-    for i, document in enumerate(results["documents"][0], start=1):
-        print(f"\nResult {i}:")
-        print(document)
-    """

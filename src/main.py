@@ -24,6 +24,12 @@ while True:
     query_embedding = embed_text([query])[0]
     results = search_database(collection, query_embedding)
 
+    context = "\n".join(results["documents"][0])
+    print(context)
+
+    # Old results output
+    """
     for i, document in enumerate(results["documents"][0], start=1):
         print(f"\nResult {i}:")
         print(document)
+    """

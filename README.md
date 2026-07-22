@@ -56,6 +56,7 @@ personal-knowledge-system/
 - [x] Embedding generation
 - [x] Vector database integration (ChromaDB)
 - [x] Semantic retrieval
+- [ ] Prompt construction
 - [ ] LLM integration
 - [ ] Citation support
 - [ ] User interface

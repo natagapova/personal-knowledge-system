@@ -6,7 +6,7 @@ A Retrieval-Augmented Generation (RAG) system that answers questions using perso
 
 This project is a from-scratch implementation of a RAG pipeline built in Python. It allows users to upload PDF documents, retrieve the most relevant information using semantic search, and generate grounded answers with an LLM.
 
-The goal of this project is to better understand every component of a modern RAG system by implementing the pipeline step by step rather than relying on high-level frameworks.
+The goal of this project is to better understand every component of a modern RAG system by implementing the pipeline step by step rather than relying on high-level frameworks. No AI was used in the process, all code is hand-written.
 
 ## Features
 
@@ -16,14 +16,6 @@ The goal of this project is to better understand every component of a modern RAG
 - Semantic search with a vector database
 - LLM-powered question answering
 - Source citations
-
-## Tech Stack
-
-- Python
-- PyPDF2
-- Sentence Transformers
-- ChromaDB
-- OpenAI API
 
 ## Project Structure
 

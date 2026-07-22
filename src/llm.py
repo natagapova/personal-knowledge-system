@@ -1,23 +1,17 @@
 import ollama
 from ollama import chat
 
-"""
-response = ollama.chat(
-    model="llama3.2",
-    messages=[
-        {
-            "role": "user",
-            "content": "Hello! Tell me a fun fact."
-        }
-    ]
-)
-print(response.message.content)
-"""
-
 def generate_answer(question, context):
     # the f before the sring means "python, replace variables inside {} with their values"
     prompt = f"""
-    Use the following context to answer the quetsion.
+    You are a question answering assistant.
+    Answer the user's question using ONLY the provided context.
+
+    If the answer cannot be found in the context, say:
+    "I don't know based on the provided documents."
+
+    Do not use your own knowledge.
+    Do not make up information.
 
     Context:
     {context}

@@ -4,7 +4,7 @@ from embeddings import embed_text
 from chroma_db import create_database, store_embeddings, search_database
 from llm import generate_answer
 
-text = load_pdf("data/crime.pdf")
+text = load_pdf(f"data/mathai.pdf")
 chunks = chunk_text(text)
 embeddings = embed_text(chunks)
 
@@ -28,4 +28,3 @@ while True:
     
     answer = generate_answer(query, context)
     print(answer)
-

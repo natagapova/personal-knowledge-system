@@ -67,5 +67,4 @@ def chunk_text(pages):
 
         current_position = end + 1
 
-    print(full_text[:1000])
     return chunks, page_positions

@@ -4,8 +4,21 @@ from embeddings import embed_text
 from chroma_db import create_database, store_embeddings, search_database
 from llm import generate_answer
 
-text = load_pdf(f"data/mathai.pdf")
-chunks = chunk_text(text)
+text = load_pdf(f"data/crime.pdf")
+
+# when a function returns multiple values, we can assign them to multiple variables
+# that way we unpack those values
+chunks, page_positions = chunk_text(text)
+
+for chunk in chunks:
+    print(type(chunk))
+    print(chunk)
+    break
+
+    if len(chunk["page_numbers"]) > 1:
+        print(chunk)
+
+"""
 embeddings = embed_text(chunks)
 
 collection = create_database()
@@ -28,3 +41,4 @@ while True:
     
     answer = generate_answer(query, context)
     print(answer)
+"""

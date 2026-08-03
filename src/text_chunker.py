@@ -16,6 +16,15 @@ def clean_text(text):
 
     return text.strip()
 
+def find_pages(start, end, page_positions):
+    page_numbers = []
+
+    for page in page_positions:
+        if start < page["end"] and end > page["start"]:
+            page_numbers.append(page["page_number"])
+
+    return page_numbers
+
 def chunk_text(pages):
 
     # 1. text + page number map
@@ -61,7 +70,8 @@ def chunk_text(pages):
                 {
                     "text": chunk.strip(),
                     "start": start,
-                    "end": end
+                    "end": end,
+                    "page_numbers": find_pages(start, end, page_positions)
                 }
             )
 

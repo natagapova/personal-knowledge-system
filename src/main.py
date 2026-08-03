@@ -9,18 +9,18 @@ text = load_pdf(f"data/crime.pdf")
 # when a function returns multiple values, we can assign them to multiple variables
 # that way we unpack those values
 chunks, page_positions = chunk_text(text)
+print(len(chunks))
 
 for chunk in chunks:
     print(type(chunk))
     print(chunk)
     break
 
-    if len(chunk["page_numbers"]) > 1:
-        print(chunk)
+embeddings = embed_text(chunks)
+print(len(embeddings))
+print(embeddings[0])
 
 """
-embeddings = embed_text(chunks)
-
 collection = create_database()
 if collection.count() == 0:
     print("Indexing PDF...")

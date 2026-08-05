@@ -39,4 +39,13 @@ while True:
 
     context = "\n\n".join(context_parts)
     answer = generate_answer(query, context)
+
     print(answer)
+    print()
+    if "I don't know" not in answer:
+        print("Sources:")
+        for i in range(len(results["documents"][0])):
+            doc = results["documents"][0][i]
+            meta = results["metadatas"][0][i]
+            source = f"[{meta['filename']}, page {meta['page_numbers']}]"
+            print(f'"{doc}" {source}')

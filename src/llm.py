@@ -13,6 +13,9 @@ def generate_answer(question, context):
     Do not use your own knowledge.
     Do not make up information.
 
+    When you use information from the context, mentionthe source
+    (filename and page number) in your answer.
+
     Context:
     {context}
 

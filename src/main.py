@@ -20,24 +20,6 @@ if collection.count() == 0:
 else:
     print("Database already exists.")
 
-query = "What causes crime?"
-query_embedding = embed_text([query])[0]
-results = search_database(collection, query_embedding)
-print(results["documents"][0])
-print(results["metadatas"][0])
-
-context_parts = []
-for i in range(len(results["documents"][0])):
-    doc = results["documents"][0][i]
-    meta = results["metadatas"][0][i]
-
-    citation = f"[{meta['filename']}, page {meta['page_numbers']}]"
-    context_parts.append(f"{citation}\n{doc}")
-
-print(context_parts[0])
-
-
-"""
 while True:
     query = input("\nAsk a question (or type 'exit'): ")
 
@@ -47,8 +29,14 @@ while True:
     query_embedding = embed_text([query])[0]
     results = search_database(collection, query_embedding)
 
-    context = "\n\n".join(results["documents"][0])
-    
+    context_parts = []
+    for i in range(len(results["documents"][0])):
+        doc = results["documents"][0][i]
+        meta = results["metadatas"][0][i]
+
+        citation = f"[{meta['filename']}, page {meta['page_numbers']}]"
+        context_parts.append(f"{citation}\n{doc}")
+
+    context = "\n\n".join(context_parts)
     answer = generate_answer(query, context)
     print(answer)
-"""

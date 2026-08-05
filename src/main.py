@@ -20,6 +20,8 @@ if collection.count() == 0:
 else:
     print("Database already exists.")
 
+query_embedding = embed_text(["What causes crime?"])
+print(len(query_embedding[0]))
 
 """
 while True:

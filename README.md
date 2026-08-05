@@ -50,7 +50,7 @@ personal-knowledge-system/
 - [x] Semantic retrieval
 - [x] Prompt construction
 - [x] LLM integration (Ollama)
-- [ ] Citation support
+- [x] Citation support
 - [ ] Multiple files support
 
 ---

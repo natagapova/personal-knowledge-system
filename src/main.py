@@ -1,8 +1,17 @@
+import os
 from pdf_loader import load_pdf
 from text_chunker import chunk_text
 from embeddings import embed_text
 from chroma_db import create_database, store_embeddings, search_database
 from llm import generate_answer
+
+data_folder = "data"
+pdf_files = []
+for filename in os.listdir(data_folder):
+    if filename.endswith(".pdf"):
+        pdf_files.append(filename)
+
+print(pdf_files)
 
 text = load_pdf(f"data/crime.pdf")
 

@@ -11,9 +11,35 @@ for filename in os.listdir(data_folder):
     if filename.endswith(".pdf"):
         pdf_files.append(filename)
 
-print(pdf_files)
+for pdf_file in pdf_files:
+    path = f"{data_folder}/{pdf_file}"
+    pages = load_pdf(path)
+    chunks, page_positions = chunk_text(pages)
+
+    print(f"{pdf_files}: {len(chunks)} chunks")
 
 text = load_pdf(f"data/crime.pdf")
+
+print("Search in:")
+print("1 - one file")
+print("2 - whole folder")
+choice = input("Enter 1 or 2: ")
+
+if choice == "1":
+    print("\nAvailable files:")
+    for i, pdf_file in enumerate(pdf_files):
+        print(f"{i+1} - {pdf_file}")
+
+    file_choice = input("Enter file number: ")
+    selected_file = pdf_files[int(file_choice) - 1]
+    print(f"Selected file: {selected_file}")
+
+elif choice == "2":
+    print("You chose whole folder")
+    selected_file = None # none = all files
+
+else:
+    print("Invalid choice. Try again.")
 
 # when a function returns multiple values, we can assign them to multiple variables
 # that way we unpack those values

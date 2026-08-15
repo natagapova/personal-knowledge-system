@@ -29,15 +29,22 @@ def store_embeddings(collection, chunks, embeddings, filename):
         })
 
     collection.add(
-        ids=[str(i) for i in range(len(chunks))],
+        ids=[f"{filename}_{str(i)}" for i in range(len(chunks))],
         documents = documents, # strings/chunks
         embeddings = embeddings,
         metadatas = metadata, # citation information for each chunk
     )
 
-def search_database(collection, query_embedding):
-    results = collection.query(
-        query_embeddings = [query_embedding],
-        n_results = 3,
-    )
+def search_database(collection, query_embedding, filename = None):
+    if filename: # if filename is provided, only search that file
+        results = collection.query(
+            query_embeddings = [query_embedding],
+            n_results = 5,
+            where = {"filename": filename},
+        )
+    else: # if filename is not provided, search all files (the whole folder)
+        results = collection.query(
+            query_embeddings = [query_embedding],
+            n_results = 5,
+        )
     return results

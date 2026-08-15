@@ -11,47 +11,47 @@ for filename in os.listdir(data_folder):
     if filename.endswith(".pdf"):
         pdf_files.append(filename)
 
-for pdf_file in pdf_files:
-    path = f"{data_folder}/{pdf_file}"
-    pages = load_pdf(path)
-    chunks, page_positions = chunk_text(pages)
+while True:
+    print("Search in:")
+    print("1 - one file")
+    print("2 - whole folder")
+    choice = input("Enter 1 or 2: ")
 
-    print(f"{pdf_files}: {len(chunks)} chunks")
+    if choice == "1":
+        print("\nAvailable files:")
+        for i, pdf_file in enumerate(pdf_files):
+            print(f"{i+1} - {pdf_file}")
 
-text = load_pdf(f"data/crime.pdf")
+        file_choice = input("Enter file number: ")
+        selected_file = pdf_files[int(file_choice) - 1]
+        print(f"Selected file: {selected_file}")
 
-print("Search in:")
-print("1 - one file")
-print("2 - whole folder")
-choice = input("Enter 1 or 2: ")
+        break
 
-if choice == "1":
-    print("\nAvailable files:")
-    for i, pdf_file in enumerate(pdf_files):
-        print(f"{i+1} - {pdf_file}")
+    elif choice == "2":
+        print("You chose whole folder")
+        selected_file = None # none = all files
 
-    file_choice = input("Enter file number: ")
-    selected_file = pdf_files[int(file_choice) - 1]
-    print(f"Selected file: {selected_file}")
+        break
 
-elif choice == "2":
-    print("You chose whole folder")
-    selected_file = None # none = all files
-
-else:
-    print("Invalid choice. Try again.")
-
-# when a function returns multiple values, we can assign them to multiple variables
-# that way we unpack those values
-chunks, page_positions = chunk_text(text)
-filename = text[0]["filename"]
-
-embeddings = embed_text(chunks)
+    else:
+        print("Invalid choice. Try again.")
 
 collection = create_database()
+
 if collection.count() == 0:
-    print("Indexing PDF...")
-    store_embeddings(collection, chunks, embeddings, filename)
+    print("Indexing PDFs...")
+    for pdf_file in pdf_files:
+        path = f"{data_folder}/{pdf_file}"
+        pages = load_pdf(path)
+
+        chunks, page_positions = chunk_text(pages)
+        embeddings = embed_text(chunks)
+        filename = pages[0]["filename"]
+
+        store_embeddings(collection, chunks, embeddings, filename)
+
+        print(f"Indexed {pdf_file}: {len(chunks)} chunks")
 else:
     print("Database already exists.")
 
@@ -62,7 +62,7 @@ while True:
         break
 
     query_embedding = embed_text([query])[0]
-    results = search_database(collection, query_embedding)
+    results = search_database(collection, query_embedding, selected_file)
 
     context_parts = []
     for i in range(len(results["documents"][0])):

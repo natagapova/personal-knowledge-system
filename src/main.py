@@ -31,7 +31,7 @@ while True:
     elif choice == "2":
         print("You chose whole folder")
         selected_file = None # none = all files
-
+        
         break
 
     else:

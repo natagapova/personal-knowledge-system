@@ -2,6 +2,10 @@
 
 A Retrieval-Augmented Generation (RAG) system that answers questions using personal PDF documents.
 
+<p align="center">
+  <img src="assets/pks_portfolio.png" alt="Personal Knowledge System — RAG pipeline diagram" width="800">
+</p>
+
 ## Overview
 
 This project is a from-scratch implementation of a RAG pipeline built in Python. It allows users to upload PDF documents, retrieve the most relevant information using semantic search, and generate grounded answers with an LLM.
@@ -21,7 +25,9 @@ The goal of this project is to better understand every component of a modern RAG
 
 ```
 personal-knowledge-system/
+├── assets/            # Portfolio diagram and other images
 ├── data/              # PDF documents
+├── scripts/           # Utility scripts (e.g. diagram generator)
 ├── src/               # Source code
 ├── .venv/
 ├── .gitignore
